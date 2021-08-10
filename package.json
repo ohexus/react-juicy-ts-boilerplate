@@ -1,0 +1,16 @@
+{
+  "name": "react-juicy-ts-boilerplate",
+  "version": "0.1.0",
+  "description": "Juicy Boilerplate for TypeScript React Apps",
+  "author": "ohexus <moskalenko.taras.d@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ohexus/react-juicy-ts-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ohexus/react-juicy-ts-boilerplate/issues"
+  },
+  "homepage": "https://github.com/ohexus/react-juicy-ts-boilerplate",
+  "license": "MIT",
+  "main": "index.ts"
+}
