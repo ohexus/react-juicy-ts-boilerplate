@@ -1,0 +1,78 @@
+@mixin container($height: auto, $width: auto) {
+  height: $height;
+  width: $width;
+}
+
+@mixin containerSquare($size: 0) {
+  height: $size;
+  width: $size;
+}
+
+@mixin containerRound($size: 0) {
+  height: $size;
+  width: $size;
+
+  border-radius: $size / 2;
+}
+
+@mixin fillParent {
+  height: 100%;
+  width: 100%;
+}
+
+@mixin fillViewport {
+  height: 100vh;
+  width: 100vw;
+}
+
+@mixin disFlex(
+  $justify-content: flex-start,
+  $align-items: flex-start,
+  $flex-direction: row,
+  $display: flex
+) {
+  @if $display == inline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin flexCenter($flex-direction: row, $display) {
+  @include disFlex(center, center, $flex-direction, $display);
+}
+
+@mixin absoluteTopLeft($top: 0, $left: 0) {
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
+@mixin absoluteTopRight($top: 0, $right: 0) {
+  position: absolute;
+  top: $top;
+  right: $right;
+}
+
+@mixin absoluteBottomLeft($bottom: 0, $left: 0) {
+  position: absolute;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin absoluteBottomRight($bottom: 0, $right: 0) {
+  position: absolute;
+  bottom: $bottom;
+  right: $right;
+}
+
+@mixin absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}

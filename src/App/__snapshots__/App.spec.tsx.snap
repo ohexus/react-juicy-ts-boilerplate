@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders with all props 1`] = `
+<div
+  className="app"
+>
+  <h1>
+    App works!
+  </h1>
+</div>
+`;
+
+exports[`App renders with required props 1`] = `
+<div
+  className="app"
+>
+  <h1>
+    App works!
+  </h1>
+</div>
+`;
