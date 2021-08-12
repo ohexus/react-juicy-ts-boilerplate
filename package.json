@@ -75,5 +75,19 @@
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.production.js --bail --mode production",
+    "ci:lint:code": "eslint --ext .ts,.tsx --max-warnings 0 src/ tests/",
+    "ci:test:integration": "yarn run test:integration --ci --colors",
+    "ci:test:unit": "yarn run test:unit --ci --colors",
+    "lint": "eslint --ext .ts,.tsx --max-warnings 0 src/ tests/ --cache",
+    "lint:fix": "yarn lint --fix",
+    "start": "npm-run-all --parallel start:*",
+    "start:web": "webpack serve --config webpack.local.js --mode development",
+    "test": "npm-run-all --sequential lint test:*",
+    "test:integration": "jest tests/",
+    "test:types": "tsc",
+    "test:unit": "jest src/ --coverage"
   }
 }
