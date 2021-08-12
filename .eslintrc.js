@@ -16,12 +16,12 @@ module.exports = {
     'plugin:typescript-sort-keys/recommended',
   ],
   overrides: [
-    // {
-    //   files: ['src/style/_fonts.scss.d.ts', 'src/style/_reset.scss.d.ts', 'src/index.scss.d.ts'],
-    //   rules: {
-    //     '@typescript-eslint/no-empty-interface': 'off',
-    //   },
-    // },
+    {
+      files: ['src/index.scss.d.ts'],
+      rules: {
+        '@typescript-eslint/no-empty-interface': 'off',
+      },
+    },
     {
       files: ['*.ts', '*.tsx'],
       parserOptions: {
