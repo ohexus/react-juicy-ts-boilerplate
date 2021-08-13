@@ -55,7 +55,7 @@ module.exports = {
 
     'function-paren-newline': 'off',
     'implicit-arrow-linebreak': 'off',
-    'import/extensions': ['error', 'never', { css: 'always', svg: 'always' }],
+    'import/extensions': ['error', 'never', { json: 'always', scss: 'always', svg: 'always' }],
     'import/no-extraneous-dependencies': 'off',
     'import/order': [
       'error',
