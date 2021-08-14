@@ -13,11 +13,11 @@ Open [http://localhost:9000](http://localhost:9000) to view it in the browser.
 
 ### `yarn test`
 
-Launches the test runner.\
+Launches the test runner.
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.
 
 ### `yarn lint`
 
