@@ -1,6 +1,6 @@
 const QUESTION_MESSAGES = {
   GIT: {
-    NEW_ORIGIN: 'Please type the new git origin (or leave empty string)',
+    NEW_ORIGIN: 'Please type the new git origin\n(or leave empty string to skip this question)',
   },
   PROJECT: {
     INVALID_NAME: 'Please enter a valid name.',
