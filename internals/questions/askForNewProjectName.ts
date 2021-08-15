@@ -4,6 +4,7 @@
 import inquirer from 'inquirer';
 
 import QUESTION_MESSAGES from './QuestionMessages';
+import { lengthValidator } from './validators';
 
 const {
   PROJECT: { INVALID_NAME: INVALID_NAME_MESSAGE, NEW_NAME: NEW_NAME_MESSAGE },
@@ -13,12 +14,7 @@ const newProjectNameQuestion = {
   message: `${NEW_NAME_MESSAGE}:`,
   name: 'projectName',
   type: 'input',
-  validate: (name: string) => {
-    if (name.trim().length) {
-      return true;
-    }
-    return INVALID_NAME_MESSAGE;
-  },
+  validate: (name: string) => lengthValidator(name, INVALID_NAME_MESSAGE),
 };
 
 export default async function askForNewProjectName(): Promise<string> {
