@@ -35,6 +35,7 @@ Now you can run these commands:
 
 export default async function setup(): Promise<void> {
   const name = await askForNewProjectName();
+  const origin = await askForNewGitOrigin();
 
   juicySpinner.start();
 
@@ -53,12 +54,11 @@ export default async function setup(): Promise<void> {
   await addAllToGitRepo();
   await createInitialCommit();
 
-  juicySpinner.stop();
-
-  const origin = await askForNewGitOrigin();
   if (origin) {
     await addNewOrigin(origin);
   }
+
+  juicySpinner.stop();
 
   printMessage(MESSAGES.FINAL);
   printBasicMessage(MESSAGES.SCRIPTS_OVERVIEW);
