@@ -26,6 +26,11 @@ async function isGitRepo(): Promise<boolean> {
   });
 }
 
+async function executeGitCommand(input: string) {
+  const stdout = await execute(input);
+  printMessage(stdout);
+}
+
 export async function cleanRepo(): Promise<void> {
   if (await isGitRepo()) {
     juicySpinner.message(MESSAGES.REMOVE_START);
@@ -36,19 +41,18 @@ export async function cleanRepo(): Promise<void> {
   }
 }
 
-export function initGitRepo(): Promise<string> {
-  printMessage(MESSAGES.INITIALIZE);
-  return execute('git init');
+export async function initGitRepo(): Promise<void> {
+  await executeGitCommand('git init');
 }
 
-export function addAllToGitRepo(): Promise<string> {
-  return execute('git add .');
+export async function addAllToGitRepo(): Promise<void> {
+  await executeGitCommand('git add .');
 }
 
-export function createInitialCommit(): Promise<string> {
-  return execute(`git commit -m "${MESSAGES.FIRST_COMMIT}"`);
+export async function createInitialCommit(): Promise<void> {
+  await executeGitCommand(`git commit -m "${MESSAGES.FIRST_COMMIT}"`);
 }
 
-export function addNewOrigin(url: string): Promise<string> {
-  return execute(`git remote add origin ${url}`);
+export async function addNewOrigin(url: string): Promise<void> {
+  await executeGitCommand(`git remote add origin ${url}`);
 }
