@@ -53,13 +53,12 @@ export default async function setup(): Promise<void> {
   await addAllToGitRepo();
   await createInitialCommit();
 
-  const origin = await askForNewGitOrigin();
+  juicySpinner.stop();
 
+  const origin = await askForNewGitOrigin();
   if (origin) {
     await addNewOrigin(origin);
   }
-
-  juicySpinner.stop();
 
   printMessage(MESSAGES.FINAL);
   printBasicMessage(MESSAGES.SCRIPTS_OVERVIEW);
