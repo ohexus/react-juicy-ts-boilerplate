@@ -3,11 +3,11 @@
                   @typescript-eslint/no-unsafe-return */
 import inquirer from 'inquirer';
 
-import QUESTIONS from './Questions';
+import QUESTION_MESSAGES from './QuestionMessages';
 
 const {
   PROJECT: { INVALID_NAME: INVALID_NAME_MESSAGE, NEW_NAME: NEW_NAME_MESSAGE },
-} = QUESTIONS;
+} = QUESTION_MESSAGES;
 
 const newProjectNameQuestion = {
   message: `${NEW_NAME_MESSAGE}:`,
