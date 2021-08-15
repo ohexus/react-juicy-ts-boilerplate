@@ -7,5 +7,5 @@ export {
   removeGitDir,
   removeInternalsDir,
 } from './fs';
-export { cleanRepo, addAllToGitRepo, createInitialCommit, initGitRepo } from './git';
+export { addAllToGitRepo, addNewOrigin, cleanRepo, createInitialCommit, initGitRepo } from './git';
 export { updateIndexHtml, updatePackageJson, updateReadme, updateTsConfig } from './updateInfo';
