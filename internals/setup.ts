@@ -1,6 +1,7 @@
-import { askForNewProjectName } from './questions';
+import { askForNewGitOrigin, askForNewProjectName } from './questions';
 import {
   addAllToGitRepo,
+  addNewOrigin,
   cleanRepo,
   createInitialCommit,
   initGitRepo,
@@ -51,6 +52,12 @@ export default async function setup(): Promise<void> {
   await initGitRepo();
   await addAllToGitRepo();
   await createInitialCommit();
+
+  const origin = await askForNewGitOrigin();
+
+  if (origin) {
+    await addNewOrigin(origin);
+  }
 
   juicySpinner.stop();
 
