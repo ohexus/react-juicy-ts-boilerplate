@@ -48,3 +48,7 @@ export function addAllToGitRepo(): Promise<string> {
 export function createInitialCommit(): Promise<string> {
   return execute(`git commit -m "${MESSAGES.FIRST_COMMIT}"`);
 }
+
+export function addNewOrigin(url: string): Promise<string> {
+  return execute(`git remote add origin ${url}`);
+}

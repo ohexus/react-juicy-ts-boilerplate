@@ -1,1 +1,7 @@
-export { cleanRepo, addAllToGitRepo, createInitialCommit, initGitRepo } from './actions';
+export {
+  addAllToGitRepo,
+  addNewOrigin,
+  cleanRepo,
+  createInitialCommit,
+  initGitRepo,
+} from './actions';
