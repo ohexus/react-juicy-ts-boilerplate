@@ -17,20 +17,38 @@ interface PackageJson {
   version: string;
 }
 
-export default async function updatePackageJson(name: string): Promise<void> {
+function updateGitRepoInfo(packageJson: PackageJson, origin?: string): PackageJson {
+  const updatedPackageJson = packageJson;
+
+  delete updatedPackageJson.bugs;
+  delete updatedPackageJson.homepage;
+
+  if (origin) {
+    updatedPackageJson.repository = {
+      type: 'git',
+      url: origin,
+    };
+  } else {
+    delete updatedPackageJson.repository;
+  }
+
+  return updatedPackageJson;
+}
+
+export default async function updatePackageJson(name: string, gitOrigin?: string): Promise<void> {
   juicySpinner.message(MESSAGES.START);
 
-  const packageJson = JSON.parse(await readFile(PKG_PATH)) as PackageJson;
+  let packageJson = JSON.parse(await readFile(PKG_PATH)) as PackageJson;
 
   packageJson.name = name.replace(' ', '-');
   packageJson.version = '0.1.0';
+
   delete packageJson.author;
-  delete packageJson.bugs;
   delete packageJson.description;
-  delete packageJson.homepage;
-  delete packageJson.repository;
   delete packageJson.scripts.presetup;
   delete packageJson.scripts.setup;
+
+  packageJson = updateGitRepoInfo(packageJson, gitOrigin);
 
   await writeFile(PKG_PATH, JSON.stringify(packageJson, null, 2));
 

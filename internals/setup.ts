@@ -41,7 +41,7 @@ export default async function setup(): Promise<void> {
 
   await Promise.all([
     updateIndexHtml(name),
-    updatePackageJson(name),
+    updatePackageJson(name, origin),
     updateTsConfig(),
     updateReadme(name),
   ]);
