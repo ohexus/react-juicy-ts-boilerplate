@@ -28,7 +28,7 @@ async function isGitRepo(): Promise<boolean> {
 
 async function executeGitCommand(input: string) {
   const stdout = await execute(input);
-  printMessage(stdout);
+  printMessage(`\n${stdout}`);
 }
 
 export async function cleanRepo(): Promise<void> {
