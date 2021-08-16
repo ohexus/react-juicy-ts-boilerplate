@@ -1,11 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 
+import { printError } from '../../utils';
+
 export function removeDir(dir: string): Promise<void> {
   return new Promise((resolve) => {
     fs.rm(dir, { recursive: true }, (error) => {
       if (error) {
-        throw error;
+        printError(error);
       }
       resolve();
     });
