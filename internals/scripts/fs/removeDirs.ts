@@ -15,9 +15,9 @@ export function removeDir(dir: string): Promise<void> {
 }
 
 export async function removeGitDir(): Promise<void> {
-  await removeDir(path.resolve(__dirname, '../../../.git/'));
+  return removeDir(path.resolve(__dirname, '../../../.git/'));
 }
 
 export async function removeInternalsDir(): Promise<void> {
-  await removeDir(path.resolve(__dirname, '../../../internals/'));
+  return removeDir(path.resolve(__dirname, '../../../internals/'));
 }
