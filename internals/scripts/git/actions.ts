@@ -1,4 +1,4 @@
-import { juicySpinner, printMessage } from '../../utils';
+import { juicySpinner, printError, printMessage } from '../../utils';
 import execute from '../execute';
 import { removeGitDir } from '../fs';
 
@@ -26,23 +26,22 @@ async function isGitRepo(): Promise<boolean> {
   });
 }
 
-async function executeGitCommand(input: string) {
-  const stdout = await execute(input);
-  printMessage(`\n${stdout}`);
+async function executeGitCommand(input: string): Promise<void> {
+  return execute(input)
+    .then((stdout) => printMessage(`\n${stdout}`))
+    .catch((err) => printError(`\n${(err as Error).message}`));
 }
 
 export async function cleanRepo(): Promise<void> {
-  try {
-    if (await isGitRepo()) {
+  await isGitRepo()
+    .then(async () => {
       juicySpinner.message(MESSAGES.REMOVE_START);
 
       await removeGitDir();
 
       printMessage(`\n${MESSAGES.REMOVE_SUCCESS}`);
-    }
-  } catch (err) {
-    printMessage((err as Error).message);
-  }
+    })
+    .catch((err) => printError(`\n${(err as Error).message}`));
 }
 
 export async function initGitRepo(): Promise<void> {

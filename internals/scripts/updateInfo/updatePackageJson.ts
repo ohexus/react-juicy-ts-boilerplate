@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { juicySpinner, printMessage } from '../../utils';
+import { juicySpinner, printError, printMessage } from '../../utils';
 import { readFile, writeFile } from '../fs';
 import { UPDATE_MESSAGES } from './consts';
 
@@ -38,19 +38,26 @@ function updateGitRepoInfo(packageJson: PackageJson, origin?: string): PackageJs
 export default async function updatePackageJson(name: string, gitOrigin?: string): Promise<void> {
   juicySpinner.message(MESSAGES.START);
 
-  let packageJson = JSON.parse(await readFile(PKG_PATH)) as PackageJson;
+  let packageJson = await readFile(PKG_PATH)
+    .then((data) => JSON.parse(data) as PackageJson)
+    .catch((err) => {
+      printError(err);
+      return undefined;
+    });
 
-  packageJson.name = name.replace(' ', '-');
-  packageJson.version = '0.1.0';
+  if (packageJson) {
+    packageJson.name = name.replace(' ', '-');
+    packageJson.version = '0.1.0';
 
-  delete packageJson.author;
-  delete packageJson.description;
-  delete packageJson.scripts.presetup;
-  delete packageJson.scripts.setup;
+    delete packageJson.author;
+    delete packageJson.description;
+    delete packageJson.scripts.presetup;
+    delete packageJson.scripts.setup;
 
-  packageJson = updateGitRepoInfo(packageJson, gitOrigin);
+    packageJson = updateGitRepoInfo(packageJson, gitOrigin);
 
-  await writeFile(PKG_PATH, JSON.stringify(packageJson, null, 2));
+    await writeFile(PKG_PATH, JSON.stringify(packageJson, null, 2));
 
-  printMessage(MESSAGES.SUCCESS);
+    printMessage(MESSAGES.SUCCESS);
+  }
 }
