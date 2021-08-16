@@ -32,12 +32,16 @@ async function executeGitCommand(input: string) {
 }
 
 export async function cleanRepo(): Promise<void> {
-  if (await isGitRepo()) {
-    juicySpinner.message(MESSAGES.REMOVE_START);
+  try {
+    if (await isGitRepo()) {
+      juicySpinner.message(MESSAGES.REMOVE_START);
 
-    await removeGitDir();
+      await removeGitDir();
 
-    printMessage(`\n${MESSAGES.REMOVE_SUCCESS}`);
+      printMessage(`\n${MESSAGES.REMOVE_SUCCESS}`);
+    }
+  } catch (err) {
+    printMessage((err as Error).message);
   }
 }
 
