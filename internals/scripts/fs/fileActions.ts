@@ -6,14 +6,14 @@ const ERROR = {
 };
 
 export function readFile(path: string): Promise<string> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     if (!path) {
-      throw new Error(ERROR.PATH_NOT_PROVIDED);
+      reject(new Error(ERROR.PATH_NOT_PROVIDED));
     }
 
     fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
-        throw err;
+        reject(err);
       }
 
       resolve(data);
@@ -22,18 +22,18 @@ export function readFile(path: string): Promise<string> {
 }
 
 export function writeFile(path: string, data: string): Promise<void> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     if (!path) {
-      throw new Error(ERROR.PATH_NOT_PROVIDED);
+      reject(new Error(ERROR.PATH_NOT_PROVIDED));
     }
 
     if (!data) {
-      throw new Error(ERROR.DATA_NOT_PROVIDED);
+      reject(new Error(ERROR.DATA_NOT_PROVIDED));
     }
 
     fs.writeFile(path, data, (err) => {
       if (err) {
-        throw err;
+        reject(err);
       }
 
       resolve();
