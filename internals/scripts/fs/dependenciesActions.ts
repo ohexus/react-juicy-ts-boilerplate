@@ -22,6 +22,6 @@ export default async function removeInternalDependencies(): Promise<void> {
   juicySpinner.message(MESSAGES.START);
 
   return execute(`yarn remove ${INTERNAL_DEPENDENCIES.join(' ')}`)
-    .then(() => printMessage(`\n${MESSAGES.SUCCESS}`))
-    .catch((err) => printError(`\n${(err as Error).message}`));
+    .then(() => printMessage(MESSAGES.SUCCESS))
+    .catch((err) => printError(err));
 }

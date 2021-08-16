@@ -28,8 +28,8 @@ async function isGitRepo(): Promise<boolean> {
 
 async function executeGitCommand(input: string): Promise<void> {
   return execute(input)
-    .then((stdout) => printMessage(`\n${stdout}`))
-    .catch((err) => printError(`\n${(err as Error).message}`));
+    .then((stdout) => printMessage(stdout))
+    .catch((err) => printError(err));
 }
 
 export async function cleanRepo(): Promise<void> {
@@ -39,9 +39,9 @@ export async function cleanRepo(): Promise<void> {
 
       await removeGitDir();
 
-      printMessage(`\n${MESSAGES.REMOVE_SUCCESS}`);
+      printMessage(MESSAGES.REMOVE_SUCCESS);
     })
-    .catch((err) => printError(`\n${(err as Error).message}`));
+    .catch((err) => printError(err));
 }
 
 export async function initGitRepo(): Promise<void> {
