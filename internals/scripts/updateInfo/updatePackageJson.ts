@@ -18,7 +18,7 @@ interface PackageJson {
 }
 
 function transformName(str: string): string {
-  return str.replace(' ', '-').replace(/\b[A-Z]\b/, (match) => `-${match.toLowerCase()}`);
+  return str.replace(' ', '-').replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
 }
 
 function updateGitRepoInfo(packageJson: PackageJson, origin?: string): PackageJson {
