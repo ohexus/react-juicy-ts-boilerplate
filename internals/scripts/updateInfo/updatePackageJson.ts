@@ -46,7 +46,7 @@ export default async function updatePackageJson(name: string, gitOrigin?: string
     });
 
   if (packageJson) {
-    packageJson.name = name.replace(' ', '-');
+    packageJson.name = name.toLowerCase().replace(' ', '-');
     packageJson.version = '0.1.0';
 
     delete packageJson.author;
