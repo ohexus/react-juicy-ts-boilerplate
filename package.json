@@ -1,6 +1,6 @@
 {
   "name": "react-juicy-ts-boilerplate",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Juicy Boilerplate for TypeScript React Apps",
   "author": "ohexus <moskalenko.taras.d@gmail.com>",
   "repository": {
@@ -82,7 +82,8 @@
     "ci:test:integration": "yarn run test:integration --ci --colors",
     "ci:test:unit": "yarn run test:unit --ci --colors",
     "lint": "eslint --ext .ts,.tsx --max-warnings 0 src/ tests/ --cache",
-    "lint:fix": "yarn lint --fix",
+    "presetup": "yarn add --dev chalk inquirer @types/inquirer ts-node @types/node clui @types/clui figlet @types/figlet",
+    "setup": "ts-node ./internals/index.ts",
     "start": "npm-run-all --parallel start:*",
     "start:web": "webpack serve --config webpack.local.js --mode development",
     "test": "npm-run-all --sequential lint test:*",

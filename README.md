@@ -15,21 +15,18 @@ Juicy Boilerplate for TypeScript React Apps.
 
 You can just run `yarn setup`. This command installs all packages. Then you will get a questionnaire with the next questions:
 
-- Do you want to start with a new repository?
-- Do you want to change project name?
-- Please type new project name, e.g. HoneyProjectVeryLongName:
-- Please type new short name, e.g. HoneyProject (if you leave empty string full name will be used):
+- Please type the new project name, e.g. HoneyProject
 
 Internal scripts will do all the work and rename the project for you. All you have to do is add a remote link to your repository (if you like).
 
 ### SCSS
 
-Project includes SCSS by default and also supports absolute imports.\
-You can import your SCSS modules by typing `@import '@styles/module'`.\
+The project includes SCSS by default and also supports absolute imports.\
+You can import your SCSS modules by typing `@import '@styles/module'`.
 
 ### ESLint
 
-Project includes ESLint configuration for development in React.
+The project includes ESLint configuration for React development.
 
 ## Available Scripts
 
@@ -42,11 +39,11 @@ Open [http://localhost:9000](http://localhost:9000) to view it in the browser.
 
 ### `yarn test`
 
-Launches the test runner.\
+Launches the test runner.
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.
 
 ### `yarn setup`
 
