@@ -17,6 +17,10 @@ interface PackageJson {
   version: string;
 }
 
+function transformName(str: string): string {
+  return str.replace(' ', '-').replace(/\b[A-Z]\b/, (match) => `-${match.toLowerCase()}`);
+}
+
 function updateGitRepoInfo(packageJson: PackageJson, origin?: string): PackageJson {
   const updatedPackageJson = packageJson;
 
@@ -46,7 +50,7 @@ export default async function updatePackageJson(name: string, gitOrigin?: string
     });
 
   if (packageJson) {
-    packageJson.name = name.toLowerCase().replace(' ', '-');
+    packageJson.name = transformName(name);
     packageJson.version = '0.1.0';
 
     delete packageJson.author;

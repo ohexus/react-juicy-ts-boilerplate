@@ -1,4 +1,4 @@
-export const PLACEHOLDER_REGEX = /{{react-juicy-ts-boilerplate}}/i;
+export const PLACEHOLDER_REGEX = /{{react-juicy-ts-boilerplate}}/;
 
 export const UPDATE_MESSAGES = {
   HTML: {

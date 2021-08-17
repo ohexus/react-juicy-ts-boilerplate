@@ -7,11 +7,15 @@ import QUESTION_MESSAGES from './QuestionMessages';
 import { lengthValidator } from './validators';
 
 const {
-  PROJECT: { INVALID_NAME: INVALID_NAME_MESSAGE, NEW_NAME: NEW_NAME_MESSAGE },
+  PROJECT: {
+    INVALID_NAME: INVALID_NAME_MESSAGE,
+    NEW_NAME: NEW_NAME_MESSAGE,
+    PACKAGE_JSON_NAME: PACKAGE_JSON_NAME_MESSAGE,
+  },
 } = QUESTION_MESSAGES;
 
 const newProjectNameQuestion = {
-  message: `${NEW_NAME_MESSAGE}:`,
+  message: `${PACKAGE_JSON_NAME_MESSAGE}\n${NEW_NAME_MESSAGE}:`,
   name: 'projectName',
   type: 'input',
   validate: (name: string) => lengthValidator(name, INVALID_NAME_MESSAGE),
