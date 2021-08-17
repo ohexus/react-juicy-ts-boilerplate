@@ -6,6 +6,20 @@ export {
   removeDir,
   removeGitDir,
   removeInternalsDir,
+  updateInternals,
 } from './fs';
-export { addAllToGitRepo, addNewOrigin, cleanRepo, createInitialCommit, initGitRepo } from './git';
-export { updateIndexHtml, updatePackageJson, updateReadme, updateTsConfig } from './updateInfo';
+export {
+  addAllToGitRepo,
+  addNewOrigin,
+  cleanRepo,
+  createInitialCommit,
+  initGitRepo,
+  updateRepo,
+} from './git';
+export {
+  updateIndexHtml,
+  updatePackageJson,
+  updateReadme,
+  updateTsConfig,
+  updateInfo,
+} from './updateInfo';

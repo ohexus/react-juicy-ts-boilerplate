@@ -1,18 +1,6 @@
 import { askForNewGitOrigin, askForNewProjectName } from './questions';
-import {
-  addAllToGitRepo,
-  addNewOrigin,
-  cleanRepo,
-  createInitialCommit,
-  initGitRepo,
-  removeInternalDependencies,
-  removeInternalsDir,
-  updateIndexHtml,
-  updatePackageJson,
-  updateReadme,
-  updateTsConfig,
-} from './scripts';
-import { chalkColored, juicySpinner, printBasicMessage, printMessage } from './utils';
+import { updateInternals, updateRepo, updateInfo } from './scripts';
+import { chalkColored, printBasicMessage, printMessage } from './utils';
 
 const MESSAGES = {
   FINAL: 'Project initialized.',
@@ -37,28 +25,9 @@ export default async function setup(): Promise<void> {
   const name = await askForNewProjectName();
   const origin = await askForNewGitOrigin();
 
-  juicySpinner.start();
-
-  await Promise.all([
-    updateIndexHtml(name),
-    updatePackageJson(name, origin),
-    updateTsConfig(),
-    updateReadme(name),
-  ]);
-
-  await removeInternalDependencies();
-  await removeInternalsDir();
-
-  await cleanRepo();
-  await initGitRepo();
-  await addAllToGitRepo();
-  await createInitialCommit();
-
-  if (origin) {
-    await addNewOrigin(origin);
-  }
-
-  juicySpinner.stop();
+  await updateInfo(name, origin);
+  await updateInternals();
+  await updateRepo(origin);
 
   printMessage(MESSAGES.FINAL);
   printBasicMessage(MESSAGES.SCRIPTS_OVERVIEW);
