@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 const QUESTION_MESSAGES = {
   GIT: {
+    INVALID_ORIGIN: 'Provided url does not match known pattern, do you want to continue?',
     NEW_ORIGIN: 'Please type the new git origin\n(or leave empty string to skip this question)',
   },
   PROJECT: {
