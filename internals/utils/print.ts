@@ -17,6 +17,10 @@ export function printError(error: Error | string = ''): void {
 
 export function printMessage(message: string): void {
   if (message.length) {
-    console.log(`\n${chalkColored(message, 'Cyan')}`);
+    console.log(chalkColored(message, 'Cyan'));
   }
+}
+
+export function printNewLineMessage(message: string): void {
+  printMessage(`\n${message}`);
 }

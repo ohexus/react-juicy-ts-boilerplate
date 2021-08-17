@@ -1,4 +1,4 @@
-import { juicySpinner, printError, printMessage } from '../../utils';
+import { juicySpinner, printError, printNewLineMessage } from '../../utils';
 import execute from '../execute';
 import { removeGitDir } from '../fs';
 
@@ -7,7 +7,7 @@ const MESSAGES = {
   INITIALIZE: 'Initialising new repository...',
   NOT_REPO: 'Not a git repository.',
   REMOVE_START: 'Removing current repository...',
-  REMOVE_SUCCESS: 'Current repository have been removed.',
+  REMOVE_SUCCESS: 'Current repository has been removed.',
 };
 
 const IS_GIT_REPO_REGEX = /fatal:\s+Not\s+a\s+git\s+repository/i;
@@ -27,7 +27,7 @@ async function isGitRepo(): Promise<boolean> {
 
 async function executeGitCommand(input: string): Promise<void> {
   return execute(input)
-    .then((stdout) => printMessage(stdout))
+    .then((stdout) => printNewLineMessage(stdout))
     .catch((err) => printError(err));
 }
 
@@ -38,7 +38,7 @@ export async function cleanRepo(): Promise<void> {
 
       await removeGitDir();
 
-      printMessage(MESSAGES.REMOVE_SUCCESS);
+      printNewLineMessage(MESSAGES.REMOVE_SUCCESS);
     })
     .catch((err) => printError(err));
 }

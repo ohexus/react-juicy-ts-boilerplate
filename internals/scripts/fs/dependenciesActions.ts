@@ -1,4 +1,4 @@
-import { juicySpinner, printError, printMessage } from '../../utils';
+import { juicySpinner, printError, printNewLineMessage } from '../../utils';
 import execute from '../execute';
 
 const INTERNAL_DEPENDENCIES = [
@@ -22,6 +22,6 @@ export default async function removeInternalDependencies(): Promise<void> {
   juicySpinner.message(MESSAGES.START);
 
   return execute(`yarn remove ${INTERNAL_DEPENDENCIES.join(' ')}`)
-    .then(() => printMessage(MESSAGES.SUCCESS))
+    .then(() => printNewLineMessage(MESSAGES.SUCCESS))
     .catch((err) => printError(err));
 }
