@@ -6,7 +6,7 @@ Juicy Boilerplate for TypeScript React Apps.
 
 1. Clone this repo using `git clone https://github.com/ohexus/react-juicy-ts-boilerplate.git <YOUR_PROJECT_NAME>`
 2. Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.
-3. Run `yarn setup` to install all packages, (optional) start with a new repo and (optional) rename project.
+3. Run `yarn setup` to install all packages, rename project and start with a new repo.
 4. Finally run `yarn start` and navigate to [http://localhost:9000](http://localhost:9000) to see the app running.
 
 ## Features
@@ -47,7 +47,7 @@ Builds the app for production to the `build` folder.
 
 ### `yarn setup`
 
-This command installs all packages, renames project and (optional) removes .git/ dir and creates a new one.
+This command installs all packages, renames project, removes .git/ dir and creates a new repository.
 
 ### `yarn lint`
 
