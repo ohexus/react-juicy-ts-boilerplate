@@ -2,6 +2,7 @@
                   @typescript-eslint/no-unsafe-member-access,
                   @typescript-eslint/no-unsafe-return */
 import inquirer from 'inquirer';
+import { printBasicMessage } from '../utils';
 
 import QUESTION_MESSAGES from './QuestionMessages';
 import { lengthValidator } from './validators';
@@ -15,12 +16,13 @@ const {
 } = QUESTION_MESSAGES;
 
 const newProjectNameQuestion = {
-  message: `${PACKAGE_JSON_NAME_MESSAGE}\n${NEW_NAME_MESSAGE}:`,
+  message: `${NEW_NAME_MESSAGE}:`,
   name: 'projectName',
   type: 'input',
   validate: (name: string) => lengthValidator(name, INVALID_NAME_MESSAGE),
 };
 
 export default async function askForNewProjectName(): Promise<string> {
+  printBasicMessage(PACKAGE_JSON_NAME_MESSAGE);
   return (await inquirer.prompt([newProjectNameQuestion])).projectName.trim();
 }
