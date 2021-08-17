@@ -12,12 +12,13 @@ export default async function updateRepo(origin?: string): Promise<void> {
 
   await cleanRepo();
   await initGitRepo();
+
+  juicySpinner.stop();
+
   await addAllToGitRepo();
   await createInitialCommit();
 
   if (origin) {
     await addNewOrigin(origin);
   }
-
-  juicySpinner.stop();
 }

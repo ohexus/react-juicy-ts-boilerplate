@@ -8,7 +8,6 @@ const MESSAGES = {
   NOT_REPO: 'Not a git repository.',
   REMOVE_START: 'Removing current repository...',
   REMOVE_SUCCESS: 'Current repository have been removed.',
-  REPO_NOT_CHANGED: 'Left the existing repo.',
 };
 
 const IS_GIT_REPO_REGEX = /fatal:\s+Not\s+a\s+git\s+repository/i;
@@ -45,6 +44,8 @@ export async function cleanRepo(): Promise<void> {
 }
 
 export async function initGitRepo(): Promise<void> {
+  juicySpinner.message(MESSAGES.INITIALIZE);
+
   return executeGitCommand('git init');
 }
 
