@@ -28,7 +28,7 @@ export default async function askForNewGitOrigin(): Promise<string | undefined> 
 
   let confirmed = true;
 
-  if (!gitUrlValidator(origin.trim())) {
+  if (origin?.length && !gitUrlValidator(origin.trim())) {
     confirmed = (await inquirer.prompt([invalidGitOriginQuestion])).confirmed;
   }
 
