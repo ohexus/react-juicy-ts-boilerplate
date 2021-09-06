@@ -44,6 +44,17 @@ function updateGitRepoInfo(packageJson: PackageJson, origin?: string): PackageJs
   return updatedPackageJson;
 }
 
+function deleteUnusedInfo(packageJson: PackageJson) {
+  const updatedPackageJson = { ...packageJson };
+
+  delete updatedPackageJson.author;
+  delete updatedPackageJson.description;
+  delete updatedPackageJson.scripts.presetup;
+  delete updatedPackageJson.scripts.setup;
+
+  return updatedPackageJson;
+}
+
 export default async function updatePackageJson(name: string, gitOrigin?: string): Promise<void> {
   juicySpinner.message(MESSAGES.START);
 
@@ -58,11 +69,7 @@ export default async function updatePackageJson(name: string, gitOrigin?: string
     packageJson.name = transformName(name);
     packageJson.version = '0.1.0';
 
-    delete packageJson.author;
-    delete packageJson.description;
-    delete packageJson.scripts.presetup;
-    delete packageJson.scripts.setup;
-
+    packageJson = deleteUnusedInfo(packageJson);
     packageJson = updateGitRepoInfo(packageJson, gitOrigin);
 
     await writeFile(PKG_PATH, JSON.stringify(packageJson, null, 2));
