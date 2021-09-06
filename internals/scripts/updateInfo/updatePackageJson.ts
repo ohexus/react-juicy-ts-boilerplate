@@ -27,7 +27,7 @@ function transformName(str: string): string {
 }
 
 function updateGitRepoInfo(packageJson: PackageJson, origin?: string): PackageJson {
-  const updatedPackageJson = packageJson;
+  const updatedPackageJson = { ...packageJson };
 
   delete updatedPackageJson.bugs;
   delete updatedPackageJson.homepage;
