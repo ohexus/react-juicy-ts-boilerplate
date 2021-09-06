@@ -31,7 +31,7 @@
   $flex-direction: row,
   $display: flex
 ) {
-  @if $display == inline {
+  @if $display == inline or $display == inline-flex {
     display: inline-flex;
   } @else {
     display: flex;
@@ -41,7 +41,7 @@
   align-items: $align-items;
 }
 
-@mixin flexCenter($flex-direction: row, $display) {
+@mixin flexCenter($flex-direction: row, $display: flex) {
   @include disFlex(center, center, $flex-direction, $display);
 }
 
