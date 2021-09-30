@@ -8,11 +8,7 @@ module.exports = () =>
     devServer: {
       historyApiFallback: true,
       open: true,
-      overlay: true,
       port: 9000,
-      watchOptions: {
-        ignored: [common.NODE_MODULES_REGEX, common.TESTS_REGEX],
-      },
     },
     devtool: 'eval-cheap-source-map',
     plugins: [
@@ -29,4 +25,7 @@ module.exports = () =>
         },
       }),
     ],
+    watchOptions: {
+      ignored: [common.NODE_MODULES_REGEX, common.TESTS_REGEX],
+    },
   });
