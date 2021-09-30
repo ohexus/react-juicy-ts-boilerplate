@@ -6,6 +6,7 @@ const common = require('./webpack.common.js');
 module.exports = () =>
   merge(common('development'), {
     devServer: {
+      historyApiFallback: true,
       open: true,
       overlay: true,
       port: 9000,
