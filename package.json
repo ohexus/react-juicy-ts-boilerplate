@@ -82,7 +82,7 @@
     "ci:test:integration": "yarn run test:integration --ci --colors",
     "ci:test:unit": "yarn run test:unit --ci --colors",
     "lint": "eslint --ext .ts,.tsx --max-warnings 0 src/ tests/ --cache",
-    "presetup": "yarn add --dev chalk inquirer @types/inquirer ts-node @types/node clui @types/clui figlet @types/figlet",
+    "presetup": "yarn add --dev chalk@^4.1.2 inquirer @types/inquirer ts-node @types/node clui @types/clui figlet @types/figlet",
     "setup": "ts-node ./internals/index.ts",
     "start": "npm-run-all --parallel start:*",
     "start:web": "webpack serve --config webpack.local.js --mode development",
