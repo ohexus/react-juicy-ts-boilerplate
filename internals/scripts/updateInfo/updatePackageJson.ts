@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { juicySpinner, printError, printMessage } from '../../utils';
+import { convertGitSshToHttps, juicySpinner, printError, printMessage } from '../../utils';
 import { readFile, writeFile } from '../fs';
 import { UPDATE_MESSAGES } from './consts';
 
@@ -30,7 +30,7 @@ function updateGitRepoInfo(packageJson: PackageJson, origin?: string): PackageJs
   if (origin) {
     updatedPackageJson.repository = {
       type: 'git',
-      url: origin,
+      url: convertGitSshToHttps(origin),
     };
   } else {
     delete updatedPackageJson.repository;
